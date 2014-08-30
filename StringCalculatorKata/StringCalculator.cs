@@ -13,7 +13,21 @@ namespace StringCalculatorKata
             if (numbers == String.Empty)
                 return 0;
 
-            return numbers.Split(',', '\n').Sum(x => int.Parse(x));
+            return GetTokens(numbers).Sum(x => int.Parse(x));
+        }
+
+        public static IEnumerable<string> GetTokens(string numbers)
+        {
+            char delimiter = ',';
+            numbers = numbers.Replace("\n", delimiter + "");
+
+            if (numbers.StartsWith("//"))
+            {
+                delimiter = numbers[2];
+                numbers = numbers.Substring(4);
+            }
+
+            return numbers.Split(delimiter);
         }
     }
 }
