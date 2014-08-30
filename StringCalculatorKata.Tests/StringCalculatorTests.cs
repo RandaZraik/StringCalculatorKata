@@ -60,16 +60,20 @@ namespace StringCalculatorKata.Tests
             Assert.Equal(1006, StringCalculator.Add("1,5\n1000,2000"));
         }
 
-        [Fact]
-        public void AddAcceptsDelimiterOfAnyLength()
+        [Theory]
+        [InlineData("//[***]\n1***2***3", 6)]
+        [InlineData("//[$]\n1$2$5", 8)]
+        public void AddAcceptsDelimiterOfAnyLength(string numbers, int expected)
         {
-            Assert.Equal(6, StringCalculator.Add("//[***]\n1***2***3"));
+            Assert.Equal(expected, StringCalculator.Add(numbers));
         }
 
-        [Fact]
-        public void AddAcceptsMultipleDelimitersOfAnyLength()
+        [Theory]
+        [InlineData("//[*][%]\n1*2%3", 6)]
+        [InlineData("//[***][\n\n]\n1***2\n\n4", 7)]
+        public void AddAcceptsMultipleDelimitersOfAnyLength(string numbers, int expected)
         {
-            Assert.Equal(6, StringCalculator.Add("//[*][%]\n1*2%3"));
+            Assert.Equal(expected, StringCalculator.Add(numbers));
         }
     }
 }
