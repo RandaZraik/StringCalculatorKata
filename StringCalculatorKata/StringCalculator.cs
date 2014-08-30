@@ -13,7 +13,18 @@ namespace StringCalculatorKata
             if (numbers == String.Empty)
                 return 0;
 
-            return GetTokens(numbers).Sum(x => int.Parse(x));
+            IEnumerable<string> tokens = GetTokens(numbers);
+
+            HandleNegativeNumbers(tokens);
+
+            return tokens.Sum(x => int.Parse(x));
+        }
+
+        private static void HandleNegativeNumbers(IEnumerable<string> numbers)
+        {
+            string[] negNumbers = numbers.Where(x => int.Parse(x) < 0).ToArray();
+            if (negNumbers.Length > 0)
+                throw new Exception("negatives are not allowed: " + String.Join(",", negNumbers.ToArray()));
         }
 
         public static IEnumerable<string> GetTokens(string numbers)
