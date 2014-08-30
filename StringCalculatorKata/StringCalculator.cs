@@ -29,16 +29,22 @@ namespace StringCalculatorKata
 
         public static IEnumerable<string> GetTokens(string numbers)
         {
-            char delimiter = ',';
-            numbers = numbers.Replace("\n", delimiter + "");
+            string delimiter = ",";
+            numbers = numbers.Replace("\n", delimiter);
 
-            if (numbers.StartsWith("//"))
+            if (numbers.StartsWith("//["))
             {
-                delimiter = numbers[2];
+                int index = numbers.IndexOf(']');
+                delimiter = numbers.Substring(3, index - 3);
+                numbers = numbers.Substring(index + 2);
+            }
+            else if (numbers.StartsWith("//"))
+            {
+                delimiter = numbers[2] + "";
                 numbers = numbers.Substring(4);
             }
 
-            return numbers.Split(delimiter);
+            return numbers.Split(delimiter.ToArray(), StringSplitOptions.RemoveEmptyEntries);
         }
     }
 }
