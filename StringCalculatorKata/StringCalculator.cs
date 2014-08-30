@@ -12,7 +12,12 @@ namespace StringCalculatorKata
         {
             if (numbers == String.Empty)
                 return 0;
-            return int.Parse(numbers);
+
+            if (!numbers.Contains(','))
+                return int.Parse(numbers);
+
+            var nums = numbers.Split(',');
+            return int.Parse(nums[0]) + int.Parse(nums[1]);
         }
     }
 }

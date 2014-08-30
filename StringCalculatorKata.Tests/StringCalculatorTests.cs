@@ -20,5 +20,11 @@ namespace StringCalculatorKata.Tests
         {
             Assert.Equal(1, StringCalculator.Add("1"));
         }
+
+        [Fact]
+        public void AddReturnsSumOfTwoNumbersString()
+        {
+            Assert.Equal(3, StringCalculator.Add("1,2"));
+        }
     }
 }
