@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using Xunit.Extensions;
 
 namespace StringCalculatorKata.Tests
 {
@@ -27,10 +28,12 @@ namespace StringCalculatorKata.Tests
             Assert.Equal(3, StringCalculator.Add("1,2"));
         }
 
-        [Fact]
-        public void AddReturnsSumOfMultipleNumbersString()
+        [Theory]
+        [InlineData("1,2,3", 6)]
+        [InlineData("1,2,3,4", 10)]
+        public void AddReturnsSumOfMultipleNumbersString(string number, int expected)
         {
-            Assert.Equal(6, StringCalculator.Add("1,2,3"));
+            Assert.Equal(expected, StringCalculator.Add(number));
         }
     }
 }
