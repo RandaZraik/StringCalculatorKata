@@ -65,5 +65,11 @@ namespace StringCalculatorKata.Tests
         {
             Assert.Equal(6, StringCalculator.Add("//[***]\n1***2***3"));
         }
+
+        [Fact]
+        public void AddAcceptsMultipleDelimitersOfAnyLength()
+        {
+            Assert.Equal(6, StringCalculator.Add("//[*][%]\n1*2%3"));
+        }
     }
 }
