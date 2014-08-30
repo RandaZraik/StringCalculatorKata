@@ -17,7 +17,7 @@ namespace StringCalculatorKata
 
             HandleNegativeNumbers(tokens);
 
-            return tokens.Sum(x => int.Parse(x));
+            return tokens.Sum(x => int.Parse(x) > 1000 ? 0 : int.Parse(x));
         }
 
         private static void HandleNegativeNumbers(IEnumerable<string> numbers)
