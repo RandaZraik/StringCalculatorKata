@@ -41,5 +41,11 @@ namespace StringCalculatorKata.Tests
         {
             Assert.Equal(6, StringCalculator.Add("1\n2,3"));
         }
+
+        [Fact]
+        public void AddAcceptsDifferentDelimiter()
+        {
+            Assert.Equal(10, StringCalculator.Add("//;\n1;2;3;4"));
+        }
     }
 }
