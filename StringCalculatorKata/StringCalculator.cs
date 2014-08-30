@@ -34,9 +34,23 @@ namespace StringCalculatorKata
 
             if (numbers.StartsWith("//["))
             {
-                int index = numbers.IndexOf(']');
-                delimiter = numbers.Substring(3, index - 3);
-                numbers = numbers.Substring(index + 2);
+                string delimiter_;
+                bool moreDelimiters = true;
+
+                numbers = numbers.Substring(2);
+                while (moreDelimiters)
+                {
+                    int index = numbers.IndexOf(']');
+                    delimiter_ = numbers.Substring(1, index - 1);
+                    numbers = numbers.Substring(index + 1);
+                    numbers = numbers.Replace(delimiter_, delimiter);
+
+                    if (numbers[0] == ',')
+                    {
+                        moreDelimiters = false;
+                        numbers = numbers.Substring(1);
+                    }
+                }
             }
             else if (numbers.StartsWith("//"))
             {
