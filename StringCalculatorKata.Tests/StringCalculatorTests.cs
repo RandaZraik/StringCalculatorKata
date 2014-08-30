@@ -47,5 +47,11 @@ namespace StringCalculatorKata.Tests
         {
             Assert.Equal(10, StringCalculator.Add("//;\n1;2;3;4"));
         }
+
+        [Fact]
+        public void AddThrowsExceptionOnNegativeNumbers()
+        {
+            Assert.Throws<Exception>(() => StringCalculator.Add("-1,-2,8,9,-6\n-6"));
+        }
     }
 }
