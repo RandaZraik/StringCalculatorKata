@@ -53,5 +53,11 @@ namespace StringCalculatorKata.Tests
         {
             Assert.Throws<Exception>(() => StringCalculator.Add("-1,-2,8,9,-6\n-6"));
         }
+
+        [Fact]
+        public void AddIgnoresNumbersBiggerThan1000()
+        {
+            Assert.Equal(1006, StringCalculator.Add("1,5\n1000,2000"));
+        }
     }
 }
