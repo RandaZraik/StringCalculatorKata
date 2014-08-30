@@ -59,5 +59,11 @@ namespace StringCalculatorKata.Tests
         {
             Assert.Equal(1006, StringCalculator.Add("1,5\n1000,2000"));
         }
+
+        [Fact]
+        public void AddAcceptsDelimiterOfAnyLength()
+        {
+            Assert.Equal(6, StringCalculator.Add("//[***]\n1***2***3"));
+        }
     }
 }
