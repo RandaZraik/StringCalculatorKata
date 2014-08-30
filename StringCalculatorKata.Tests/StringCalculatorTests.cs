@@ -26,5 +26,11 @@ namespace StringCalculatorKata.Tests
         {
             Assert.Equal(3, StringCalculator.Add("1,2"));
         }
+
+        [Fact]
+        public void AddReturnsSumOfMultipleNumbersString()
+        {
+            Assert.Equal(6, StringCalculator.Add("1,2,3"));
+        }
     }
 }
