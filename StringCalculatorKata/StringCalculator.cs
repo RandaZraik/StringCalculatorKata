@@ -10,7 +10,9 @@ namespace StringCalculatorKata
     {
         public static int Add(string numbers)
         {
-            return 0;
+            if (numbers == String.Empty)
+                return 0;
+            return int.Parse(numbers);
         }
     }
 }

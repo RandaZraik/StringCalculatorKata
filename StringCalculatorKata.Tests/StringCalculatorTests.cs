@@ -14,5 +14,11 @@ namespace StringCalculatorKata.Tests
         {
             Assert.Equal(0, StringCalculator.Add(""));
         }
+
+        [Fact]
+        public void AddReturnsNumberOnNumberString()
+        {
+            Assert.Equal(1, StringCalculator.Add("1"));
+        }
     }
 }
