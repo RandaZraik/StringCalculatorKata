@@ -13,7 +13,7 @@ namespace StringCalculatorKata
             if (numbers == String.Empty)
                 return 0;
 
-            return numbers.Split(',').Sum(x => int.Parse(x));
+            return numbers.Split(',', '\n').Sum(x => int.Parse(x));
         }
     }
 }
