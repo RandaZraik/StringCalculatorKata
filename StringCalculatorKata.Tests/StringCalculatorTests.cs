@@ -35,5 +35,11 @@ namespace StringCalculatorKata.Tests
         {
             Assert.Equal(expected, StringCalculator.Add(number));
         }
+
+        [Fact]
+        public void AddAcceptsNewlineAsDelimiter()
+        {
+            Assert.Equal(6, StringCalculator.Add("1\n2,3"));
+        }
     }
 }
