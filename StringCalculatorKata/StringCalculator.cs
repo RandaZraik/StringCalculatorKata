@@ -10,9 +10,6 @@ namespace StringCalculatorKata
     {
         public static int Add(string numbers)
         {
-            if (numbers == String.Empty)
-                return 0;
-
             IEnumerable<string> tokens = GetTokens(numbers);
 
             HandleNegativeNumbers(tokens);
