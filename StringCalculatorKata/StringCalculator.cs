@@ -11,9 +11,7 @@ namespace StringCalculatorKata
         public static int Add(string numbers)
         {
             IEnumerable<string> tokens = GetTokens(numbers);
-
             HandleNegativeNumbers(tokens);
-
             return tokens.Sum(x => int.Parse(x) > 1000 ? 0 : int.Parse(x));
         }
 
@@ -27,21 +25,17 @@ namespace StringCalculatorKata
         public static IEnumerable<string> GetTokens(string numbers)
         {
             string delimiter = ",";
-            numbers = numbers.Replace("\n", delimiter);
 
+            numbers = numbers.Replace("\n", delimiter);
             if (numbers.StartsWith("//["))
             {
-                string delimiter_;
                 bool moreDelimiters = true;
-
                 numbers = numbers.Substring(2);
                 while (moreDelimiters)
                 {
                     int index = numbers.IndexOf(']');
-                    delimiter_ = numbers.Substring(1, index - 1);
-                    numbers = numbers.Substring(index + 1);
-                    numbers = numbers.Replace(delimiter_, delimiter);
-
+                    string delimiter_ = numbers.Substring(1, index - 1);
+                    numbers = numbers.Substring(index + 1).Replace(delimiter_, delimiter);
                     if (numbers[0] == ',')
                     {
                         moreDelimiters = false;
